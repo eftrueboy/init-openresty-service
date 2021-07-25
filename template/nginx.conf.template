@@ -1,0 +1,29 @@
+worker_processes  1;
+
+events {
+  worker_connections  1024;
+}
+http {
+  default_type  application/octet-stream;
+  access_log  logs/${service_name}-access.log;
+  error_log  logs/${service_name}-error.log;
+
+  #lua_package_path '../common/?.lua;;';
+  server {
+    listen       ${service_port};
+    server_name  localhost;
+    default_type text/html;
+    location = /favicon.ico {
+      log_not_found off;
+      access_log off;
+    }
+
+    location /main {
+      content_by_lua_file ${project_name}/${service_name}/src/main.lua;
+    }
+    location /index {
+      content_by_lua_file ${project_name}/${service_name}/src/index.lua;
+
+    }
+  }
+}

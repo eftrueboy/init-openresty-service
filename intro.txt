@@ -1,0 +1,2 @@
+example:
+./init_openresty_service openresty-im account-service 9099

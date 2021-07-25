@@ -1,0 +1,4 @@
+\cp -f conf/${service_name}-nginx.conf ../../conf/
+cmd="../../sbin/nginx -c conf/${service_name}-nginx.conf"
+echo $cmd
+${cmd}

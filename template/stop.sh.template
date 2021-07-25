@@ -1,0 +1,3 @@
+cmd="../../sbin/nginx -c conf/${service_name}-nginx.conf -s stop"
+echo $cmd
+${cmd}
